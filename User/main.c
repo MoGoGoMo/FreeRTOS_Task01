@@ -57,8 +57,11 @@ int main(void)
        To reconfigure the default setting of SystemInit() function, 
        refer to system_stm32f4xx.c file */
 
+  RCC_ClocksTypeDef RCC_Clocks;
   /* SysTick end of count event each 10ms */
   RCC_GetClocksFreq(&RCC_Clocks);
+
+  bsp_Init();   
 
   /* Infinite loop */
   while (1)

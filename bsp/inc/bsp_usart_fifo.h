@@ -94,5 +94,32 @@ typedef enum
 /* Uart device instructure definition */
 typedef struct
 {
-   USART_TypeDef *
-}
+  USART_TypeDef *uart;
+  uint8_t *pTxBuf;
+  uint8_t *pRxBuf;
+  uint16_t usTxBufSize;
+  uint16_t usRxBufSize;
+  __IO uint16_t usTxWrite;
+  __IO uint16_t usTxRead;		
+	__IO uint16_t usTxCount;	
+
+	__IO uint16_t usRxWrite;	
+	__IO uint16_t usRxRead;		
+  __IO uint16_t usRxCount;	
+	void (*SendBefor)(void); 	
+	void (*SendOver)(void); 	
+	void (*ReciveNew)(uint8_t _byte);
+}UartStr_TypeDef;
+
+void bsp_InitUart(void);
+void comSendBuf(UartPort_TypeDef _ucPort, uint8_t *_ucaBuf, uint16_t _usLen);
+void comSendChar(UartPort_TypeDef _ucPort, uint8_t _ucByte);
+uint8_t comGetChar(UartPort_TypeDef _ucPort, uint8_t *_pByte);
+void comSendBuf(UartPort_TypeDef _ucPort, uint8_t *_ucaBuf, uint16_t _usLen);
+void comClearTxFifo(UartPort_TypeDef _ucPort);
+void comClearRxFifo(UartPort_TypeDef _ucPort);
+void comSetBaud(UartPort_TypeDef _ucPort, uint32_t _BaudRate);
+
+void USART_SetBaudRate(USART_TypeDef* USARTx, uint32_t BaudRate);
+
+#endif

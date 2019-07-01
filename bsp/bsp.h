@@ -28,10 +28,10 @@
 #ifndef __BSP_H
 #define __BSP_H
 
-#define STM32_F446
+// #define STM32F446xx
 #define USE_FREERTOS    0
 
-#if !defined(STM32_F446) || !defined(STM32_F407) || !defined(STM32_F401)
+#if !defined(STM32F446xx)
     #error "Please define the board model : STM32_F446 or STM32_F407 or STM32_F401"
 #endif
 
@@ -59,7 +59,7 @@
 #endif
 
 #ifndef FALSE
-    #dfine FALSE 0
+    #define FALSE 0
 #endif
 
 /* Include OS Libraries ------------------------------------------------------------------------*/
@@ -67,10 +67,10 @@
 
 /* Include User App & BSP  ---------------------------------------------------------------------*/
 #include "bsp_usart_fifo.h"
-#include "bsp_led.h"
-#include "bsp_key.h"
+// #include "bsp_led.h"
+// #include "bsp_key.h"
 
-#include "bsp_tim_pwm.h"
+// #include "bsp_tim_pwm.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

@@ -27,30 +27,18 @@ STLINK:=/usr/local/Cellar/stlink/1.5.1/bin
 # C sources
 C_SOURCES = \
 User/main.c \
-User/sysInfoTest.c \
-User/bsp/stm32f4xx_it.c \
-User/bsp/system_stm32f4xx.c \
-User/bsp/stm32f4xx_assert.c	\
-User/bsp/bsp.c \
-User/bsp/src/bsp_led.c \
-User/bsp/src/bsp_uart_fifo.c \
-User/bsp/src/bsp_key.c \
-User/bsp/src/bsp_tim_pwm.c \
-User/bsp/printf.c \
+User/stm32f4xx_it.c \
+User/system_stm32f4xx.c \
+bsp/bsp.c \
+bsp/src/bsp_uart_fifo.c \
+bsp/src/bsp_tim_pwm.c \
+bsp/printf.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c \
-Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c \
-FreeRTOS/croutine.c \
-FreeRTOS/event_groups.c \
-FreeRTOS/list.c \
-FreeRTOS/queue.c \
-FreeRTOS/tasks.c \
-FreeRTOS/timers.c \
-FreeRTOS/portable/MemMang/heap_4.c \
-FreeRTOS/portable/GCC/ARM_CM4F/port.c
+Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c
 
 # ASM sources
 #ASRC_DIR:=$(wildcadr $(STARTUP)/*.s)
@@ -113,14 +101,13 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =  \
 -IUser \
--IUser/bsp \
--IUser/bsp/inc \
+-Ibsp \
+-Ibsp/inc \
 -ILibraries/CMSIS/Device/ST/STM32F4xx/Include \
 -ILibraries/CMSIS/Include \
 -ILibraries/STM32F4xx_StdPeriph_Driver/inc \
 -IFreeRTOS/include \
 -IFreeRTOS/portable/GCC/ARM_CM4F
-####-ILibrary/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include \
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
@@ -129,7 +116,6 @@ CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-
 
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -gdwarf-2
-#CFLAGS += -g
 endif
 
 # Generate dependency information
@@ -139,7 +125,6 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-##LDSCRIPT = STM32F446ZE_FLASH.ld
 LDSCRIPT = STM32F446RETx_FLASH.ld
 
 # libraries
@@ -156,7 +141,6 @@ all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET
 # list of objects
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES)))
-#vpath %.c src lib/src/peripherals bsp
 
 # list of ASM program objects
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
@@ -194,52 +178,3 @@ burn:$(TARGET).bin
 # dependencies
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
-
-#################################################################################################################
-#STARTUP:=$(CURDIR)/lib
-
-#MCUFLAGS:= -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork
-
-#LDLIBS:=-lgcc -Llib -lstm32f4 -lm -lc -ffreestanding -nostdlib -flto
-
-#vpath %.a lib
-#vpath %.s $(STARTUP)
-
-#OBJS:=$(SRC:%.c=%.o)
-#%.o:%.c
-#	@echo [CC] $(notdir $(SRCS))
-#	$(CC) -c $(CFLAGS) $^ -o $@
-
-#%o:%.s
-#	@echo [AS] $(ASRC)
-#	$(AS) -o $(ASRC:%.s=%.o) $(ASRC)
-
-#all:lib target
-
-#lib:
-	# @echo "************************* Building Lib **********************************"
-	# $(MAKE) -C lib
-
-	# @echo ************************** Building Main Project **************************
-	# @echo ***************************************************************************
-
-# target_bin:$(PRJ_NAME).elf #$(PRJ_NAME).hex
-#$(PRJ_NAME).bin:$(PRJ_NAME).elf
-	# @echo [BIN] $(PRJ_NAME).bin
-	# $(OBJCOPY) -O binary $(PRJ_NAME).elf $(PRJ_NAME).bin
-
-#target_hex:$(PRJ_NAME).elf
-#$(PRJ_NAME).hex:$(PRJ_NAME).elf
-#	@echo [HEX] $(PRJ_NAME).hex
-#	$(OBJCOPY) -O ihex $(PRJ_NAME).elf $(PRJ_NAME).hex
-
-# $(PRJ_NAME).elf:$(OBJS)
-	# @echo [LD] $(PRJ_NAME).elf
-	# $(CC) -o $(PRJ_NAME).elf $(LDFLAGS) $(OBJS) $(ASRC:%.s=%.o) $(LDLIBS)
-
-# clean:
-	# @echo *********************** Cleaning Up ***************************************
-	# $(MAKE) -C lib cleanlib
-	# rm -f $(PRJ_NAME).elf
-	# rm -f $(PRJ_NAME).hex
-	# rm -f $(PRJ_NAME).bin

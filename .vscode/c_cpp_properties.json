@@ -1,4 +1,8 @@
-{
+{   
+    "env": {
+        "myDefaultIncludePath" :[],
+        "myCompilerPath" : ""
+    },
     "configurations": [
         {
             "name": "STM32",
@@ -27,7 +31,8 @@
                 "path": [
                     "${workspaceFolder}"
                 ],
-                "limitSymbolsToIncludedHeaders": true
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
             }
         }
     ],

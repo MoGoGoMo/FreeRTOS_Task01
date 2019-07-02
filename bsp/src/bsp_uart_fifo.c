@@ -641,7 +641,7 @@ static void InitHardUart(void)
 		/* 打开 UART 时钟 */
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
 
-    #ifdef STM32_F446
+    #ifdef STM32F446xx
         /* Alternate function PA2 to USART2_TX*/
         GPIO_PinAFConfig(GPIOA, GPIO_PinSource2, GPIO_AF_USART2);
 
@@ -658,7 +658,7 @@ static void InitHardUart(void)
 		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;	/* 内部上拉电阻使能 */
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;	/* 复用模式 */
 
-    #ifdef STM32_F446
+    #ifdef STM32F446xx
 		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
@@ -681,7 +681,7 @@ static void InitHardUart(void)
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No ;
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-    #ifdef STM32_F446
+    #ifdef STM32F446xx
     USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
     #else
 	     USART_InitStructure.USART_Mode = USART_Mode_Rx;		/* 仅选择接收模式 */

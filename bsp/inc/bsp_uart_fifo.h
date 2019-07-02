@@ -25,8 +25,7 @@
  */
 
 /* Enable USART, 0=Disable, 1=Enable */
-#ifdef STM32_F446RET
-
+#ifdef STM32F446xx
   #define UART1_FIFO_EN 0
   #define UART2_FIFO_EN 1
   #define UART3_FIFO_EN 0
@@ -62,33 +61,33 @@ typedef enum
 #endif
 
 #if UART2_FIFO_EN== 1
-#define UART1_BAUD           115200
-#define UART1_TX_BUF_SIZE    1*1024
-#define UART1_RX_BUF_SIZE    1*1024
+    #define UART2_BAUD           115200
+    #define UART2_TX_BUF_SIZE    1*1024
+    #define UART2_RX_BUF_SIZE    1*1024
 #endif
 
 #if UART3_FIFO_EN== 1
-#define UART1_BAUD           115200
-#define UART1_TX_BUF_SIZE    1*1024
-#define UART1_RX_BUF_SIZE    1*1024
+    #define UART3_BAUD           115200
+    #define UART3_TX_BUF_SIZE    1*1024
+    #define UART3_RX_BUF_SIZE    1*1024
 #endif
 
 #if UART4_FIFO_EN== 1
-#define UART1_BAUD           115200
-#define UART1_TX_BUF_SIZE    1*1024
-#define UART1_RX_BUF_SIZE    1*1024
+    #define UART4_BAUD           115200
+    #define UART4_TX_BUF_SIZE    1*1024
+    #define UART4_RX_BUF_SIZE    1*1024
 #endif
 
 #if UART5_FIFO_EN== 1
-#define UART1_BAUD           115200
-#define UART1_TX_BUF_SIZE    1*1024
-#define UART1_RX_BUF_SIZE    1*1024
+    #define UART5_BAUD           115200
+    #define UART5_TX_BUF_SIZE    1*1024
+    #define UART5_RX_BUF_SIZE    1*1024
 #endif
 
 #if UART6_FIFO_EN== 1
-#define UART1_BAUD           115200
-#define UART1_TX_BUF_SIZE    1*1024
-#define UART1_RX_BUF_SIZE    1*1024
+    #define UART6_BAUD           115200
+    #define UART6_TX_BUF_SIZE    1*1024
+    #define UART6_RX_BUF_SIZE    1*1024
 #endif
 
 /* Uart device instructure definition */

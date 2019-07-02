@@ -1,0 +1,183 @@
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.main,"ax",%progbits
+  18              		.align	1
+  19              		.global	main
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	main:
+  27              	.LFB126:
+  28              		.file 1 "User/main.c"
+   1:User/main.c   **** /**
+   2:User/main.c   ****   ******************************************************************************
+   3:User/main.c   ****   * @file    Project/STM32F4xx_StdPeriph_Templates/main.c 
+   4:User/main.c   ****   * @author  MCD Application Team
+   5:User/main.c   ****   * @version V1.8.0
+   6:User/main.c   ****   * @date    04-November-2016
+   7:User/main.c   ****   * @brief   Main program body
+   8:User/main.c   ****   ******************************************************************************
+   9:User/main.c   ****   * @attention
+  10:User/main.c   ****   *
+  11:User/main.c   ****   * <h2><center>&copy; COPYRIGHT 2016 STMicroelectronics</center></h2>
+  12:User/main.c   ****   *
+  13:User/main.c   ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  14:User/main.c   ****   * You may not use this file except in compliance with the License.
+  15:User/main.c   ****   * You may obtain a copy of the License at:
+  16:User/main.c   ****   *
+  17:User/main.c   ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  18:User/main.c   ****   *
+  19:User/main.c   ****   * Unless required by applicable law or agreed to in writing, software 
+  20:User/main.c   ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  21:User/main.c   ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  22:User/main.c   ****   * See the License for the specific language governing permissions and
+  23:User/main.c   ****   * limitations under the License.
+  24:User/main.c   ****   *
+  25:User/main.c   ****   ******************************************************************************
+  26:User/main.c   ****   */
+  27:User/main.c   **** 
+  28:User/main.c   **** /* Includes ------------------------------------------------------------------*/
+  29:User/main.c   **** #include "main.h"
+  30:User/main.c   **** 
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s 			page 2
+
+
+  31:User/main.c   **** /** @addtogroup Template_Project
+  32:User/main.c   ****   * @{
+  33:User/main.c   ****   */ 
+  34:User/main.c   **** 
+  35:User/main.c   **** /* Private typedef -----------------------------------------------------------*/
+  36:User/main.c   **** /* Private define ------------------------------------------------------------*/
+  37:User/main.c   **** /* Private macro -------------------------------------------------------------*/
+  38:User/main.c   **** /* Private variables ---------------------------------------------------------*/
+  39:User/main.c   **** 
+  40:User/main.c   **** /* Private function prototypes -----------------------------------------------*/
+  41:User/main.c   **** 
+  42:User/main.c   **** 
+  43:User/main.c   **** /* Private functions ---------------------------------------------------------*/
+  44:User/main.c   **** 
+  45:User/main.c   **** /**
+  46:User/main.c   ****   * @brief  Main program
+  47:User/main.c   ****   * @param  None
+  48:User/main.c   ****   * @retval None
+  49:User/main.c   ****   */
+  50:User/main.c   **** int main(void)
+  51:User/main.c   **** {
+  29              		.loc 1 51 1 view -0
+  30              		.cfi_startproc
+  31              		@ Volatile: function does not return.
+  32              		@ args = 0, pretend = 0, frame = 16
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34 0000 00B5     		push	{lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 14, -4
+  38 0002 85B0     		sub	sp, sp, #20
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 24
+  52:User/main.c   ****   // GPIO_InitTypeDef GPIO_InitStructure;
+  53:User/main.c   ****   // DISABLE_INT();  
+  54:User/main.c   ****  
+  55:User/main.c   ****  /*!< At this stage the microcontroller clock setting is already configured, 
+  56:User/main.c   ****        this is done through SystemInit() function which is called from startup
+  57:User/main.c   ****        files before to branch to application main.
+  58:User/main.c   ****        To reconfigure the default setting of SystemInit() function, 
+  59:User/main.c   ****        refer to system_stm32f4xx.c file */
+  60:User/main.c   **** 
+  61:User/main.c   ****   RCC_ClocksTypeDef RCC_Clocks;
+  41              		.loc 1 61 3 view .LVU1
+  62:User/main.c   ****   /* SysTick end of count event each 10ms */
+  63:User/main.c   ****   RCC_GetClocksFreq(&RCC_Clocks);
+  42              		.loc 1 63 3 view .LVU2
+  43 0004 6846     		mov	r0, sp
+  44 0006 FFF7FEFF 		bl	RCC_GetClocksFreq
+  45              	.LVL0:
+  64:User/main.c   **** 
+  65:User/main.c   ****   bsp_Init();
+  46              		.loc 1 65 3 view .LVU3
+  47 000a FFF7FEFF 		bl	bsp_Init
+  48              	.LVL1:
+  66:User/main.c   ****   printf("\r\n ** SYSCLK:%ld\r\n    PCLK1:%ld     PCLK2:%ld\r\n", RCC_Clocks.SYSCLK_Frequency, RCC_
+  49              		.loc 1 66 3 view .LVU4
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s 			page 3
+
+
+  50 000e 039B     		ldr	r3, [sp, #12]
+  51 0010 029A     		ldr	r2, [sp, #8]
+  52 0012 0099     		ldr	r1, [sp]
+  53 0014 0148     		ldr	r0, .L4
+  54 0016 FFF7FEFF 		bl	printf_
+  55              	.LVL2:
+  56              	.L2:
+  67:User/main.c   **** 
+  68:User/main.c   ****   /* Infinite loop */
+  69:User/main.c   ****   while (1)
+  57              		.loc 1 69 3 discriminator 1 view .LVU5
+  70:User/main.c   ****   {
+  71:User/main.c   ****   }
+  58              		.loc 1 71 3 discriminator 1 view .LVU6
+  59 001a FEE7     		b	.L2
+  60              	.L5:
+  61              		.align	2
+  62              	.L4:
+  63 001c 00000000 		.word	.LC0
+  64              		.cfi_endproc
+  65              	.LFE126:
+  67              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+  68              		.align	2
+  69              	.LC0:
+  70 0000 0D0A202A 		.ascii	"\015\012 ** SYSCLK:%ld\015\012    PCLK1:%ld     PCL"
+  70      2A205359 
+  70      53434C4B 
+  70      3A256C64 
+  70      0D0A2020 
+  71 0027 4B323A25 		.ascii	"K2:%ld\015\012\000"
+  71      6C640D0A 
+  71      00
+  72              		.text
+  73              	.Letext0:
+  74              		.file 2 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+  75              		.file 3 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+  76              		.file 4 "Libraries/CMSIS/Include/core_cm4.h"
+  77              		.file 5 "Libraries/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+  78              		.file 6 "Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+  79              		.file 7 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+  80              		.file 8 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+  81              		.file 9 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi
+  82              		.file 10 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
+  83              		.file 11 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
+  84              		.file 12 "bsp/bsp.h"
+  85              		.file 13 "bsp/inc/printf.h"
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s:18     .text.main:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s:26     .text.main:0000000000000000 main
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s:63     .text.main:000000000000001c $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc1esRpJ.s:68     .rodata.main.str1.4:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+RCC_GetClocksFreq
+bsp_Init
+printf_

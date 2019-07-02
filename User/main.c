@@ -49,7 +49,8 @@
   */
 int main(void)
 {
-  GPIO_InitTypeDef GPIO_InitStructure;
+  // GPIO_InitTypeDef GPIO_InitStructure;
+  // DISABLE_INT();  
  
  /*!< At this stage the microcontroller clock setting is already configured, 
        this is done through SystemInit() function which is called from startup
@@ -61,7 +62,8 @@ int main(void)
   /* SysTick end of count event each 10ms */
   RCC_GetClocksFreq(&RCC_Clocks);
 
-  bsp_Init();   
+  bsp_Init();
+  printf("\r\n ** SYSCLK:%ld\r\n    PCLK1:%ld     PCLK2:%ld\r\n", RCC_Clocks.SYSCLK_Frequency, RCC_Clocks.PCLK1_Frequency, RCC_Clocks.PCLK2_Frequency);   
 
   /* Infinite loop */
   while (1)

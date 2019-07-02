@@ -29,7 +29,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_it.h"
-#include "main.h"
+// #include "main.h"
+#include <stdio.h>
+
+#define ERR_INFO "\r\nEnter HardFault_Handler, System Halt.\r\n"
 
 /** @addtogroup Template_Project
   * @{
@@ -61,7 +64,18 @@ void NMI_Handler(void)
   * @retval None
   */
 void HardFault_Handler(void)
-{
+{ 
+  #if 1
+  const char *pError = ERR_INFO;
+  uint8_t i;
+
+  for (i = 0; i < sizeof(ERR_INFO); i++)
+  {
+     USART1->DR = pError[i];
+      /* 等待发送结束 */
+     while ((USART1->SR & USART_FLAG_TC) == (uint16_t)RESET);
+  }
+  #endif
   /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
   {
@@ -141,7 +155,7 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-  TimingDelay_Decrement();
+  // TimingDelay_Decrement();
 }
 
 /******************************************************************************/

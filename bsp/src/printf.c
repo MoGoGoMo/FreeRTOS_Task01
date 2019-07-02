@@ -929,7 +929,7 @@ void _putchar(char character)
   /* 等待发送结束 */
   //while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
   while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)
-    {}
+  {}
 
   //return ch;
 }

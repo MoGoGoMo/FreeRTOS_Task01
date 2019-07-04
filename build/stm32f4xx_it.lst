@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   28:User/stm32f4xx_it.c ****   */
   29:User/stm32f4xx_it.c **** 
   30:User/stm32f4xx_it.c **** /* Includes ------------------------------------------------------------------*/
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 2
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 2
 
 
   31:User/stm32f4xx_it.c **** #include "stm32f4xx_it.h"
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   67:User/stm32f4xx_it.c **** { 
   49              		.loc 1 67 1 view -0
   50              		.cfi_startproc
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 3
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 3
 
 
   51              		@ args = 0, pretend = 0, frame = 0
@@ -140,7 +140,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   62              	.LVL1:
   63              	.L5:
   73:User/stm32f4xx_it.c ****   {
-  74:User/stm32f4xx_it.c ****      USART1->DR = pError[i];
+  74:User/stm32f4xx_it.c ****      USART2->DR = pError[i];
   64              		.loc 1 74 6 is_stmt 1 view .LVU8
   65              		.loc 1 74 25 is_stmt 0 view .LVU9
   66 0004 064B     		ldr	r3, .L7
@@ -149,7 +149,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   69 0008 064B     		ldr	r3, .L7+4
   70 000a 9980     		strh	r1, [r3, #4]	@ movhi
   75:User/stm32f4xx_it.c ****       /* 等待发送结束 */
-  76:User/stm32f4xx_it.c ****      while ((USART1->SR & USART_FLAG_TC) == (uint16_t)RESET);
+  76:User/stm32f4xx_it.c ****      while ((USART2->SR & USART_FLAG_TC) == (uint16_t)RESET);
   71              		.loc 1 76 6 is_stmt 1 view .LVU11
   72              	.L4:
   73              		.loc 1 76 61 discriminator 1 view .LVU12
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   79:User/stm32f4xx_it.c ****   /* Go to infinite loop when Hard Fault exception occurs */
   80:User/stm32f4xx_it.c ****   while (1)
   91              		.loc 1 80 3 is_stmt 1 discriminator 1 view .LVU18
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 4
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 4
 
 
   81:User/stm32f4xx_it.c ****   {
@@ -189,7 +189,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   95              		.align	2
   96              	.L7:
   97 0020 00000000 		.word	.LC0
-  98 0024 00100140 		.word	1073811456
+  98 0024 00440040 		.word	1073759232
   99              		.cfi_endproc
  100              	.LFE127:
  102              		.section	.text.MemManage_Handler,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
   96:User/stm32f4xx_it.c **** }
   97:User/stm32f4xx_it.c **** 
   98:User/stm32f4xx_it.c **** /**
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 5
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 5
 
 
   99:User/stm32f4xx_it.c ****   * @brief  This function handles Bus Fault exception.
@@ -298,11 +298,11 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  168              		.cfi_endproc
  169              	.LFE130:
  171              		.section	.text.SVC_Handler,"ax",%progbits
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 6
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 6
 
 
  172              		.align	1
- 173              		.global	SVC_Handler
+ 173              		.weak	SVC_Handler
  174              		.syntax unified
  175              		.thumb
  176              		.thumb_func
@@ -316,7 +316,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  126:User/stm32f4xx_it.c ****   * @param  None
  127:User/stm32f4xx_it.c ****   * @retval None
  128:User/stm32f4xx_it.c ****   */
- 129:User/stm32f4xx_it.c **** void SVC_Handler(void)
+ 129:User/stm32f4xx_it.c **** __attribute__((weak)) void SVC_Handler(void)
  130:User/stm32f4xx_it.c **** {
  181              		.loc 1 130 1 view -0
  182              		.cfi_startproc
@@ -357,8 +357,8 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  209              	.LFE132:
  211              		.section	.text.PendSV_Handler,"ax",%progbits
  212              		.align	1
- 213              		.global	PendSV_Handler
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 7
+ 213              		.weak	PendSV_Handler
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 7
 
 
  214              		.syntax unified
@@ -373,7 +373,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  144:User/stm32f4xx_it.c ****   * @param  None
  145:User/stm32f4xx_it.c ****   * @retval None
  146:User/stm32f4xx_it.c ****   */
- 147:User/stm32f4xx_it.c **** void PendSV_Handler(void)
+ 147:User/stm32f4xx_it.c **** __attribute__((weak)) void PendSV_Handler(void)
  148:User/stm32f4xx_it.c **** {
  221              		.loc 1 148 1 view -0
  222              		.cfi_startproc
@@ -387,7 +387,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  229              	.LFE133:
  231              		.section	.text.SysTick_Handler,"ax",%progbits
  232              		.align	1
- 233              		.global	SysTick_Handler
+ 233              		.weak	SysTick_Handler
  234              		.syntax unified
  235              		.thumb
  236              		.thumb_func
@@ -400,14 +400,14 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  153:User/stm32f4xx_it.c ****   * @param  None
  154:User/stm32f4xx_it.c ****   * @retval None
  155:User/stm32f4xx_it.c ****   */
- 156:User/stm32f4xx_it.c **** void SysTick_Handler(void)
+ 156:User/stm32f4xx_it.c **** __attribute__((weak)) void SysTick_Handler(void)
  157:User/stm32f4xx_it.c **** {
  241              		.loc 1 157 1 view -0
  242              		.cfi_startproc
  243              		@ args = 0, pretend = 0, frame = 0
  244              		@ frame_needed = 0, uses_anonymous_args = 0
  245              		@ link register save eliminated.
- 158:User/stm32f4xx_it.c ****   // TimingDelay_Decrement();
+ 158:User/stm32f4xx_it.c ****   
  159:User/stm32f4xx_it.c **** }
  246              		.loc 1 159 1 view .LVU36
  247 0000 7047     		bx	lr
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  253              	.LC0:
  254 0000 0D0A456E 		.ascii	"\015\012Enter HardFault_Handler, System Halt.\015\012"
  254      74657220 
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 8
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 8
 
 
  254      48617264 
@@ -436,30 +436,30 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 1
  264              		.file 8 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
  265              		.file 9 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi
  266              		.file 10 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s 			page 9
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_it.c
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:18     .text.NMI_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:40     .text.HardFault_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:47     .text.HardFault_Handler:0000000000000000 HardFault_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:97     .text.HardFault_Handler:0000000000000020 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:103    .text.MemManage_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:110    .text.MemManage_Handler:0000000000000000 MemManage_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:126    .text.BusFault_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:133    .text.BusFault_Handler:0000000000000000 BusFault_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:149    .text.UsageFault_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:156    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:172    .text.SVC_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:179    .text.SVC_Handler:0000000000000000 SVC_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:192    .text.DebugMon_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:199    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:212    .text.PendSV_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:219    .text.PendSV_Handler:0000000000000000 PendSV_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:232    .text.SysTick_Handler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:239    .text.SysTick_Handler:0000000000000000 SysTick_Handler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cczoR9Ij.s:252    .rodata.HardFault_Handler.str1.4:0000000000000000 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:18     .text.NMI_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:40     .text.HardFault_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:47     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:97     .text.HardFault_Handler:0000000000000020 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:103    .text.MemManage_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:110    .text.MemManage_Handler:0000000000000000 MemManage_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:126    .text.BusFault_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:133    .text.BusFault_Handler:0000000000000000 BusFault_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:149    .text.UsageFault_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:156    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:172    .text.SVC_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:179    .text.SVC_Handler:0000000000000000 SVC_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:192    .text.DebugMon_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:199    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:212    .text.PendSV_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:219    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:232    .text.SysTick_Handler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:239    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccccMvlD.s:252    .rodata.HardFault_Handler.str1.4:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

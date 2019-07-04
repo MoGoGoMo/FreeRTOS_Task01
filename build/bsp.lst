@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s 			page 1
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc5Apv0x.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -26,7 +26,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s 			page 1
   23              		.thumb_func
   24              		.fpu fpv4-sp-d16
   26              	bsp_Init:
-  27              	.LFB126:
+  27              	.LFB130:
   28              		.file 1 "bsp/bsp.c"
    1:bsp/bsp.c     **** #include "bsp.h"
    2:bsp/bsp.c     **** 
@@ -57,16 +57,16 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s 			page 1
   45              		.loc 1 10 1 is_stmt 0 view .LVU3
   46 000e 08BD     		pop	{r3, pc}
   47              		.cfi_endproc
-  48              	.LFE126:
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s 			page 2
+  48              	.LFE130:
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc5Apv0x.s 			page 2
 
 
   50              		.text
   51              	.Letext0:
   52              		.file 2 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
   53              		.file 3 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
-  54              		.file 4 "Libraries/CMSIS/Include/core_cm4.h"
-  55              		.file 5 "Libraries/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+  54              		.file 4 "User/FreeRTOSConfig.h"
+  55              		.file 5 "Libraries/CMSIS/Include/core_cm4.h"
   56              		.file 6 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
   57              		.file 7 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
   58              		.file 8 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi
@@ -74,13 +74,13 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s 			page 1
   60              		.file 10 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
   61              		.file 11 "Libraries/STM32F4xx_StdPeriph_Driver/inc/misc.h"
   62              		.file 12 "bsp/inc/bsp_uart_fifo.h"
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s 			page 3
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc5Apv0x.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bsp.c
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s:18     .text.bsp_Init:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccAYVVXC.s:26     .text.bsp_Init:0000000000000000 bsp_Init
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc5Apv0x.s:18     .text.bsp_Init:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cc5Apv0x.s:26     .text.bsp_Init:0000000000000000 bsp_Init
 
 UNDEFINED SYMBOLS
 NVIC_PriorityGroupConfig

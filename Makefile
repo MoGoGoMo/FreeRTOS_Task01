@@ -27,6 +27,7 @@ STLINK:=/usr/local/Cellar/stlink/1.5.1/bin
 # C sources
 C_SOURCES = \
 User/main.c \
+User/sysInfoTest.c \
 User/stm32f4xx_it.c \
 User/system_stm32f4xx.c \
 bsp/bsp.c \
@@ -38,7 +39,15 @@ Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c \
-Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c
+Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c \
+FreeRTOS/croutine.c \
+FreeRTOS/event_groups.c \
+FreeRTOS/list.c \
+FreeRTOS/queue.c \
+FreeRTOS/tasks.c \
+FreeRTOS/timers.c \
+FreeRTOS/portable/MemMang/heap_4.c \
+FreeRTOS/portable/GCC/ARM_CM4F/port.c
 
 # ASM sources
 #ASRC_DIR:=$(wildcadr $(STARTUP)/*.s)

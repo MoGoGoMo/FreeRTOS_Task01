@@ -29,18 +29,23 @@
 #define __BSP_H
 
 // #define STM32F446xx
-#define USE_FREERTOS    0
+#define USE_FREERTOS    1
 
 #if !defined(STM32F446xx)
     #error "Please define the board model : STM32F446xx or STM32_F407 or STM32_F401"
 #endif
 
 /* Define BSP version ---------------------------------------------------------*/
-#define __STM32F4_BSP_VERSION       "0.1"
+#define BSP_VERSION_NUMBER       "1.0.0"
+#define BSP_VERSION_MAJOR           1
+#define BSP_VERSION_MINOR           0
+#define BSP_VERSION_BUILD           0
 
 #if USE_FREERTOS == 1
     #include "FreeRTOS.h"
     #include "task.h"
+    #include "list.h"
+    #include "queue.h"
     #define DISABLE_INT()   taskENTER_CRITICAL()
     #define ENABLE_INT()   taskEXIT_CRITICAL()
 #else

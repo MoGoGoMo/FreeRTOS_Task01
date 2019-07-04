@@ -84,9 +84,12 @@
  *----------------------------------------------------------*/
 
 /* Ensure stdint is only used by the compiler, and not the assembler. */
-#ifdef __ICCARM__
+#if defined(__ICCARM__) || defined(__CC_ARM) || defined(__GNUC__)
 	#include <stdint.h>
 	extern uint32_t SystemCoreClock;
+    #ifdef DEBUG_MODE    
+        extern volatile uint32_t ulHighFrequencyTimerTicks;
+    #endif    
 #endif
 
 #define configUSE_PREEMPTION			1
@@ -97,7 +100,7 @@
 #define configMAX_PRIORITIES			( 5 )
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 130 )
 #define configTOTAL_HEAP_SIZE			( ( size_t ) ( 75 * 1024 ) )
-#define configMAX_TASK_NAME_LEN			( 10 )
+#define configMAX_TASK_NAME_LEN			( 16 )
 #define configUSE_TRACE_FACILITY		1
 #define configUSE_16_BIT_TICKS			0
 #define configIDLE_SHOULD_YIELD			1
@@ -108,7 +111,14 @@
 #define configUSE_MALLOC_FAILED_HOOK	1
 #define configUSE_APPLICATION_TASK_TAG	0
 #define configUSE_COUNTING_SEMAPHORES	1
-#define configGENERATE_RUN_TIME_STATS	0
+
+/* Run time and task stats gathering related definitions. Add for Test by Gordon */
+#ifdef DEBUG_MODE
+#define configGENERATE_RUN_TIME_STATS	            1       //Add RUN TIM STATS by Gordon
+#define configUSE_STATS_FORMATTING_FUNCTIONS        1
+#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()     (ulHighFrequencyTimerTicks = 0ul)
+#define portGET_RUN_TIME_COUNTER_VALUE()             ulHighFrequencyTimerTicks
+#endif
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 		0

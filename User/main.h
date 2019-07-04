@@ -30,7 +30,7 @@
 #define __MAIN_H
 
 /* Includes Standard Libraries------------------------------------------------------------------*/
-#include "stm32f4xx.h"
+#include "stm32f4xx_conf.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>

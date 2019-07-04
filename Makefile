@@ -92,7 +92,8 @@ AS_DEFS =
 # C defines
 C_DEFS =  \
 -DUSE_STDPERIPH_DRIVER \
--DSTM32F446xx
+-DSTM32F446xx \
+-DDEBUG_MODE
 
 
 # AS includes

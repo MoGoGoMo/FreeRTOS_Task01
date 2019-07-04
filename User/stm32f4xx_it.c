@@ -71,9 +71,9 @@ void HardFault_Handler(void)
 
   for (i = 0; i < sizeof(ERR_INFO); i++)
   {
-     USART1->DR = pError[i];
+     USART2->DR = pError[i];
       /* 等待发送结束 */
-     while ((USART1->SR & USART_FLAG_TC) == (uint16_t)RESET);
+     while ((USART2->SR & USART_FLAG_TC) == (uint16_t)RESET);
   }
   #endif
   /* Go to infinite loop when Hard Fault exception occurs */
@@ -126,7 +126,7 @@ void UsageFault_Handler(void)
   * @param  None
   * @retval None
   */
-void SVC_Handler(void)
+__attribute__((weak)) void SVC_Handler(void)
 {
 }
 
@@ -144,7 +144,7 @@ void DebugMon_Handler(void)
   * @param  None
   * @retval None
   */
-void PendSV_Handler(void)
+__attribute__((weak)) void PendSV_Handler(void)
 {
 }
 
@@ -153,9 +153,9 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
-void SysTick_Handler(void)
+__attribute__((weak)) void SysTick_Handler(void)
 {
-  // TimingDelay_Decrement();
+  
 }
 
 /******************************************************************************/

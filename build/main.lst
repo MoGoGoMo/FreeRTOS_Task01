@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   28:User/main.c   **** /* Includes ------------------------------------------------------------------*/
   29:User/main.c   **** #include "main.h"
   30:User/main.c   **** #include "task.h"
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 2
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 2
 
 
   31:User/main.c   **** 
@@ -70,28 +70,35 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   37:User/main.c   **** /* Private define ------------------------------------------------------------*/
   38:User/main.c   **** #define mainFLASH_TASK_PRIORITY             ( tskIDLE_PRIORITY + 1UL )
   39:User/main.c   **** #define mainButton_TASK_PRIORITY            ( tskIDLE_PRIORITY + 2UL )
-  40:User/main.c   **** /* Private macro -------------------------------------------------------------*/
-  41:User/main.c   **** /* Private variables ---------------------------------------------------------*/
-  42:User/main.c   **** 
-  43:User/main.c   **** /* Private function prototypes -----------------------------------------------*/
-  44:User/main.c   **** static void prvLedFlashTask(void *pvParameters);
-  45:User/main.c   **** static void prvButtonPressedTask(void *pvParameters);
-  46:User/main.c   **** 
-  47:User/main.c   **** /* Private functions ---------------------------------------------------------*/
-  48:User/main.c   **** void vApplicationTickHook(void);
-  49:User/main.c   **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
-  50:User/main.c   **** void vApplicationIdleHook(void);
-  51:User/main.c   **** void vApplicationMallocFailedHook(void);
-  52:User/main.c   **** 
-  53:User/main.c   **** 
-  54:User/main.c   **** /**
-  55:User/main.c   ****   * @brief  Main program
-  56:User/main.c   ****   * @param  None
-  57:User/main.c   ****   * @retval None
-  58:User/main.c   ****   */
-  59:User/main.c   **** int main(void)
-  60:User/main.c   **** {
-  29              		.loc 1 60 1 view -0
+  40:User/main.c   **** #define  timerHIGHEST_PRIORITY		          ( tskIDLE_PRIORITY + 3UL )
+  41:User/main.c   **** 
+  42:User/main.c   **** /* Timer frequency，per interrupt 50us */
+  43:User/main.c   **** #define  timerINTERRUPT_FREQUENCY	20000
+  44:User/main.c   **** /* Private macro -------------------------------------------------------------*/
+  45:User/main.c   **** /* Private variables ---------------------------------------------------------*/
+  46:User/main.c   **** volatile uint32_t ulHighFrequencyTimerTicks = 0UL;  /* called by system */
+  47:User/main.c   **** 
+  48:User/main.c   **** /* Private function prototypes -----------------------------------------------*/
+  49:User/main.c   **** static void prvLedFlashTask(void *pvParameters);
+  50:User/main.c   **** static void prvButtonPressedTask(void *pvParameters);
+  51:User/main.c   **** 
+  52:User/main.c   **** /* Private functions ---------------------------------------------------------*/
+  53:User/main.c   **** void vApplicationTickHook(void);
+  54:User/main.c   **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
+  55:User/main.c   **** void vApplicationIdleHook(void);
+  56:User/main.c   **** void vApplicationMallocFailedHook(void);
+  57:User/main.c   **** static void prvSetupSysTimerForTest(void);
+  58:User/main.c   **** static void TIM6_DAC_IRQHandler( void );
+  59:User/main.c   **** 
+  60:User/main.c   **** 
+  61:User/main.c   **** /**
+  62:User/main.c   ****   * @brief  Main program
+  63:User/main.c   ****   * @param  None
+  64:User/main.c   ****   * @retval None
+  65:User/main.c   ****   */
+  66:User/main.c   **** int main(void)
+  67:User/main.c   **** {
+  29              		.loc 1 67 1 view -0
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 16
@@ -103,42 +110,42 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   38 0002 85B0     		sub	sp, sp, #20
   39              	.LCFI1:
   40              		.cfi_def_cfa_offset 24
-  61:User/main.c   ****   // GPIO_InitTypeDef GPIO_InitStructure;
-  62:User/main.c   ****   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
-  41              		.loc 1 62 3 view .LVU1
+  68:User/main.c   ****   // GPIO_InitTypeDef GPIO_InitStructure;
+  69:User/main.c   ****   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+  41              		.loc 1 69 3 view .LVU1
   42 0004 4FF44070 		mov	r0, #768
   43 0008 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
   44              	.LVL0:
-  63:User/main.c   ****   DISABLE_INT();  
-  45              		.loc 1 63 3 view .LVU2
+  70:User/main.c   ****   DISABLE_INT();  
+  45              		.loc 1 70 3 view .LVU2
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 3
+
+
   46 000c FFF7FEFF 		bl	vPortEnterCritical
   47              	.LVL1:
-  64:User/main.c   ****   // __set_PRIMASK(1);
-  65:User/main.c   ****  
-  66:User/main.c   ****  /*!< At this stage the microcontroller clock setting is already configured, 
-  67:User/main.c   ****        this is done through SystemInit() function which is called from startup
-  68:User/main.c   ****        files before to branch to application main.
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 3
-
-
-  69:User/main.c   ****        To reconfigure the default setting of SystemInit() function, 
-  70:User/main.c   ****        refer to system_stm32f4xx.c file */
-  71:User/main.c   **** 
-  72:User/main.c   ****   RCC_ClocksTypeDef RCC_Clocks;
-  48              		.loc 1 72 3 view .LVU3
-  73:User/main.c   ****   /* SysTick end of count event each 10ms */
-  74:User/main.c   ****   RCC_GetClocksFreq(&RCC_Clocks);
-  49              		.loc 1 74 3 view .LVU4
+  71:User/main.c   ****   // __set_PRIMASK(1);
+  72:User/main.c   ****  
+  73:User/main.c   ****  /*!< At this stage the microcontroller clock setting is already configured, 
+  74:User/main.c   ****        this is done through SystemInit() function which is called from startup
+  75:User/main.c   ****        files before to branch to application main.
+  76:User/main.c   ****        To reconfigure the default setting of SystemInit() function, 
+  77:User/main.c   ****        refer to system_stm32f4xx.c file */
+  78:User/main.c   **** 
+  79:User/main.c   ****   RCC_ClocksTypeDef RCC_Clocks;
+  48              		.loc 1 79 3 view .LVU3
+  80:User/main.c   ****   /* SysTick end of count event each 10ms */
+  81:User/main.c   ****   RCC_GetClocksFreq(&RCC_Clocks);
+  49              		.loc 1 81 3 view .LVU4
   50 0010 6846     		mov	r0, sp
   51 0012 FFF7FEFF 		bl	RCC_GetClocksFreq
   52              	.LVL2:
-  75:User/main.c   **** 
-  76:User/main.c   ****   bsp_Init();
-  53              		.loc 1 76 3 view .LVU5
+  82:User/main.c   **** 
+  83:User/main.c   ****   bsp_Init();
+  53              		.loc 1 83 3 view .LVU5
   54 0016 FFF7FEFF 		bl	bsp_Init
   55              	.LVL3:
-  77:User/main.c   ****   printf("\r\n ** SYSCLK:%ld\r\n    PCLK1:%ld     PCLK2:%ld\r\n", RCC_Clocks.SYSCLK_Frequency, RCC_
-  56              		.loc 1 77 3 view .LVU6
+  84:User/main.c   ****   printf("\r\n ** SYSCLK:%ld\r\n    PCLK1:%ld     PCLK2:%ld\r\n", RCC_Clocks.SYSCLK_Frequency, RCC_
+  56              		.loc 1 84 3 view .LVU6
   57 001a 039B     		ldr	r3, [sp, #12]
   58 001c 029A     		ldr	r2, [sp, #8]
   59 001e 0099     		ldr	r1, [sp]
@@ -146,13 +153,13 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   61 0022 FFF7FEFF 		bl	printf_
   62              	.LVL4:
   63              	.L2:
-  78:User/main.c   **** 
-  79:User/main.c   ****   /* Infinite loop */
-  80:User/main.c   ****   while (1)
-  64              		.loc 1 80 3 discriminator 1 view .LVU7
-  81:User/main.c   ****   {
-  82:User/main.c   ****   }
-  65              		.loc 1 82 3 discriminator 1 view .LVU8
+  85:User/main.c   **** 
+  86:User/main.c   ****   /* Infinite loop */
+  87:User/main.c   ****   while (1)
+  64              		.loc 1 87 3 discriminator 1 view .LVU7
+  88:User/main.c   ****   {
+  89:User/main.c   ****   }
+  65              		.loc 1 89 3 discriminator 1 view .LVU8
   66 0026 FEE7     		b	.L2
   67              	.L5:
   68              		.align	2
@@ -169,20 +176,20 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   80              		.fpu fpv4-sp-d16
   82              	vApplicationTickHook:
   83              	.LFB131:
-  83:User/main.c   **** }
-  84:User/main.c   **** 
-  85:User/main.c   **** void vApplicationTickHook( void )
-  86:User/main.c   **** {
-  84              		.loc 1 86 1 view -0
+  90:User/main.c   **** }
+  91:User/main.c   **** 
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 4
+
+
+  92:User/main.c   **** void vApplicationTickHook( void )
+  93:User/main.c   **** {
+  84              		.loc 1 93 1 view -0
   85              		.cfi_startproc
   86              		@ args = 0, pretend = 0, frame = 0
   87              		@ frame_needed = 0, uses_anonymous_args = 0
   88              		@ link register save eliminated.
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 4
-
-
-  87:User/main.c   **** }
-  89              		.loc 1 87 1 view .LVU10
+  94:User/main.c   **** }
+  89              		.loc 1 94 1 view .LVU10
   90 0000 7047     		bx	lr
   91              		.cfi_endproc
   92              	.LFE131:
@@ -196,25 +203,25 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  102              	vApplicationStackOverflowHook:
  103              	.LVL5:
  104              	.LFB132:
-  88:User/main.c   **** 
-  89:User/main.c   **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
-  90:User/main.c   **** {
- 105              		.loc 1 90 1 view -0
+  95:User/main.c   **** 
+  96:User/main.c   **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+  97:User/main.c   **** {
+ 105              		.loc 1 97 1 view -0
  106              		.cfi_startproc
  107              		@ Volatile: function does not return.
  108              		@ args = 0, pretend = 0, frame = 0
  109              		@ frame_needed = 0, uses_anonymous_args = 0
  110              		@ link register save eliminated.
-  91:User/main.c   ****   ( void ) pcTaskName;
- 111              		.loc 1 91 3 view .LVU12
-  92:User/main.c   ****   ( void ) pxTask;
- 112              		.loc 1 92 3 view .LVU13
-  93:User/main.c   **** 
-  94:User/main.c   ****   /* Run time stack overflow checking is performed if
-  95:User/main.c   ****   configCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
-  96:User/main.c   ****   function is called if a stack overflow is detected. */
-  97:User/main.c   ****   taskDISABLE_INTERRUPTS();
- 113              		.loc 1 97 3 view .LVU14
+  98:User/main.c   ****   ( void ) pcTaskName;
+ 111              		.loc 1 98 3 view .LVU12
+  99:User/main.c   ****   ( void ) pxTask;
+ 112              		.loc 1 99 3 view .LVU13
+ 100:User/main.c   **** 
+ 101:User/main.c   ****   /* Run time stack overflow checking is performed if
+ 102:User/main.c   ****   configCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
+ 103:User/main.c   ****   function is called if a stack overflow is detected. */
+ 104:User/main.c   ****   taskDISABLE_INTERRUPTS();
+ 113              		.loc 1 104 3 view .LVU14
  114              	.LBB6:
  115              	.LBI6:
  116              		.file 2 "FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h"
@@ -231,6 +238,9 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   11:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     Free Software Foundation >>>> AND MODIFIED BY <<<< the FreeRTOS exception.
   12:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
   13:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     ***************************************************************************
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 5
+
+
   14:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     >>!   NOTE: The modification to the GPL is included to allow you to     !<<
   15:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     >>!   distribute a combined work that includes FreeRTOS without being   !<<
   16:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     >>!   obliged to provide the source code for proprietary components     !<<
@@ -238,9 +248,6 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   18:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     ***************************************************************************
   19:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
   20:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     FreeRTOS is distributed in the hope that it will be useful, but WITHOUT ANY
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 5
-
-
   21:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
   22:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     FOR A PARTICULAR PURPOSE.  Full license text is available on the following
   23:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****     link: http://www.freertos.org/a00114.html
@@ -291,6 +298,9 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   68:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** */
   69:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
   70:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 6
+
+
   71:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #ifndef PORTMACRO_H
   72:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #define PORTMACRO_H
   73:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
@@ -298,9 +308,6 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
   75:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** extern "C" {
   76:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #endif
   77:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 6
-
-
   78:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------
   79:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****  * Port specific definitions.
   80:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h ****  *
@@ -351,6 +358,9 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  125:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 																				\
  126:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
  127:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	within the specified behaviour for the architecture. */						\
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 7
+
+
  128:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	__asm volatile( "dsb" );													\
  129:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	__asm volatile( "isb" );													\
  130:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** }
@@ -358,9 +368,6 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  132:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #define portNVIC_INT_CTRL_REG		( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
  133:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #define portNVIC_PENDSVSET_BIT		( 1UL << 28UL )
  134:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired != pdFALSE ) portYIELD()
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 7
-
-
  135:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
  136:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** /*-----------------------------------------------------------*/
  137:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
@@ -411,6 +418,9 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  182:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
  183:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	#endif
  184:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 8
+
+
  185:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
  186:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
  187:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
@@ -418,9 +428,6 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  189:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	/*-----------------------------------------------------------*/
  190:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
  191:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 	#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31 - ucPort
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 8
-
-
  192:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
  193:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
  194:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** 
@@ -464,13 +471,16 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  133              		.loc 2 215 2 is_stmt 0 view .LVU18
  134              	.LBE7:
  135              	.LBE6:
-  98:User/main.c   ****   for( ;; );
- 136              		.loc 1 98 3 is_stmt 1 discriminator 1 view .LVU19
- 137              		.loc 1 98 12 discriminator 1 view .LVU20
+ 105:User/main.c   ****   for( ;; );
+ 136              		.loc 1 105 3 is_stmt 1 discriminator 1 view .LVU19
+ 137              		.loc 1 105 12 discriminator 1 view .LVU20
  138 0010 FEE7     		b	.L8
  139              		.cfi_endproc
  140              	.LFE132:
  142              		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 9
+
+
  143              		.align	1
  144              		.global	vApplicationMallocFailedHook
  145              		.syntax unified
@@ -478,32 +488,29 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  147              		.thumb_func
  148              		.fpu fpv4-sp-d16
  150              	vApplicationMallocFailedHook:
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 9
-
-
  151              	.LFB133:
-  99:User/main.c   **** }
- 100:User/main.c   **** 
- 101:User/main.c   **** void vApplicationMallocFailedHook( void )
- 102:User/main.c   **** {
- 152              		.loc 1 102 1 view -0
+ 106:User/main.c   **** }
+ 107:User/main.c   **** 
+ 108:User/main.c   **** void vApplicationMallocFailedHook( void )
+ 109:User/main.c   **** {
+ 152              		.loc 1 109 1 view -0
  153              		.cfi_startproc
  154              		@ Volatile: function does not return.
  155              		@ args = 0, pretend = 0, frame = 0
  156              		@ frame_needed = 0, uses_anonymous_args = 0
  157              		@ link register save eliminated.
- 103:User/main.c   ****   /* vApplicationMallocFailedHook() will only be called if
- 104:User/main.c   ****   configUSE_MALLOC_FAILED_HOOK is set to 1 in FreeRTOSConfig.h.  It is a hook
- 105:User/main.c   ****   function that will get called if a call to pvPortMalloc() fails.
- 106:User/main.c   ****   pvPortMalloc() is called internally by the kernel whenever a task, queue,
- 107:User/main.c   ****   timer or semaphore is created.  It is also called by various parts of the
- 108:User/main.c   ****   demo application.  If heap_1.c or heap_2.c are used, then the size of the
- 109:User/main.c   ****   heap available to pvPortMalloc() is defined by configTOTAL_HEAP_SIZE in
- 110:User/main.c   ****   FreeRTOSConfig.h, and the xPortGetFreeHeapSize() API function can be used
- 111:User/main.c   ****   to query the size of free heap space that remains (although it does not
- 112:User/main.c   ****   provide information on how the remaining heap might be fragmented). */
- 113:User/main.c   ****   taskDISABLE_INTERRUPTS();
- 158              		.loc 1 113 3 view .LVU22
+ 110:User/main.c   ****   /* vApplicationMallocFailedHook() will only be called if
+ 111:User/main.c   ****   configUSE_MALLOC_FAILED_HOOK is set to 1 in FreeRTOSConfig.h.  It is a hook
+ 112:User/main.c   ****   function that will get called if a call to pvPortMalloc() fails.
+ 113:User/main.c   ****   pvPortMalloc() is called internally by the kernel whenever a task, queue,
+ 114:User/main.c   ****   timer or semaphore is created.  It is also called by various parts of the
+ 115:User/main.c   ****   demo application.  If heap_1.c or heap_2.c are used, then the size of the
+ 116:User/main.c   ****   heap available to pvPortMalloc() is defined by configTOTAL_HEAP_SIZE in
+ 117:User/main.c   ****   FreeRTOSConfig.h, and the xPortGetFreeHeapSize() API function can be used
+ 118:User/main.c   ****   to query the size of free heap space that remains (although it does not
+ 119:User/main.c   ****   provide information on how the remaining heap might be fragmented). */
+ 120:User/main.c   ****   taskDISABLE_INTERRUPTS();
+ 158              		.loc 1 120 3 view .LVU22
  159              	.LBB8:
  160              	.LBI8:
  211:FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h **** {
@@ -527,10 +534,13 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  177              		.loc 2 215 2 is_stmt 0 view .LVU26
  178              	.LBE9:
  179              	.LBE8:
- 114:User/main.c   ****   for( ;; );
- 180              		.loc 1 114 3 is_stmt 1 discriminator 1 view .LVU27
- 181              		.loc 1 114 12 discriminator 1 view .LVU28
+ 121:User/main.c   ****   for( ;; );
+ 180              		.loc 1 121 3 is_stmt 1 discriminator 1 view .LVU27
+ 181              		.loc 1 121 12 discriminator 1 view .LVU28
  182 0010 FEE7     		b	.L10
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 10
+
+
  183              		.cfi_endproc
  184              	.LFE133:
  186              		.section	.text.vApplicationIdleHook,"ax",%progbits
@@ -538,81 +548,88 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 1
  188              		.global	vApplicationIdleHook
  189              		.syntax unified
  190              		.thumb
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 10
-
-
  191              		.thumb_func
  192              		.fpu fpv4-sp-d16
  194              	vApplicationIdleHook:
  195              	.LFB134:
- 115:User/main.c   **** }
- 116:User/main.c   **** 
- 117:User/main.c   **** void vApplicationIdleHook( void )
- 118:User/main.c   **** {
- 196              		.loc 1 118 1 view -0
+ 122:User/main.c   **** }
+ 123:User/main.c   **** 
+ 124:User/main.c   **** void vApplicationIdleHook( void )
+ 125:User/main.c   **** {
+ 196              		.loc 1 125 1 view -0
  197              		.cfi_startproc
  198              		@ args = 0, pretend = 0, frame = 0
  199              		@ frame_needed = 0, uses_anonymous_args = 0
  200              		@ link register save eliminated.
- 119:User/main.c   ****   /* vApplicationIdleHook() will only be called if configUSE_IDLE_HOOK is set
- 120:User/main.c   ****   to 1 in FreeRTOSConfig.h.  It will be called on each iteration of the idle
- 121:User/main.c   ****   task.  It is essential that code added to this hook function never attempts
- 122:User/main.c   ****   to block in any way (for example, call xQueueReceive() with a block time
- 123:User/main.c   ****   specified, or call vTaskDelay()).  If the application makes use of the
- 124:User/main.c   ****   vTaskDelete() API function (as this demo application does) then it is also
- 125:User/main.c   ****   important that vApplicationIdleHook() is permitted to return to its calling
- 126:User/main.c   ****   function, because it is the responsibility of the idle task to clean up
- 127:User/main.c   ****   memory allocated by the kernel to any task that has since been deleted. */
- 128:User/main.c   **** }
- 201              		.loc 1 128 1 view .LVU30
+ 126:User/main.c   ****   /* vApplicationIdleHook() will only be called if configUSE_IDLE_HOOK is set
+ 127:User/main.c   ****   to 1 in FreeRTOSConfig.h.  It will be called on each iteration of the idle
+ 128:User/main.c   ****   task.  It is essential that code added to this hook function never attempts
+ 129:User/main.c   ****   to block in any way (for example, call xQueueReceive() with a block time
+ 130:User/main.c   ****   specified, or call vTaskDelay()).  If the application makes use of the
+ 131:User/main.c   ****   vTaskDelete() API function (as this demo application does) then it is also
+ 132:User/main.c   ****   important that vApplicationIdleHook() is permitted to return to its calling
+ 133:User/main.c   ****   function, because it is the responsibility of the idle task to clean up
+ 134:User/main.c   ****   memory allocated by the kernel to any task that has since been deleted. */
+ 135:User/main.c   **** }
+ 201              		.loc 1 135 1 view .LVU30
  202 0000 7047     		bx	lr
  203              		.cfi_endproc
  204              	.LFE134:
- 206              		.section	.rodata.main.str1.4,"aMS",%progbits,1
- 207              		.align	2
- 208              	.LC0:
- 209 0000 0D0A202A 		.ascii	"\015\012 ** SYSCLK:%ld\015\012    PCLK1:%ld     PCL"
- 209      2A205359 
- 209      53434C4B 
- 209      3A256C64 
- 209      0D0A2020 
- 210 0027 4B323A25 		.ascii	"K2:%ld\015\012\000"
- 210      6C640D0A 
- 210      00
- 211              		.text
- 212              	.Letext0:
- 213              		.file 3 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
- 214              		.file 4 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
- 215              		.file 5 "Libraries/CMSIS/Include/core_cm4.h"
- 216              		.file 6 "Libraries/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 217              		.file 7 "Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
- 218              		.file 8 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
- 219              		.file 9 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
- 220              		.file 10 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eab
- 221              		.file 11 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
- 222              		.file 12 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
- 223              		.file 13 "User/FreeRTOSConfig.h"
- 224              		.file 14 "FreeRTOS/include/task.h"
- 225              		.file 15 "Libraries/STM32F4xx_StdPeriph_Driver/inc/misc.h"
- 226              		.file 16 "bsp/bsp.h"
- 227              		.file 17 "bsp/inc/printf.h"
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s 			page 11
+ 206              		.global	ulHighFrequencyTimerTicks
+ 207              		.section	.bss.ulHighFrequencyTimerTicks,"aw",%nobits
+ 208              		.align	2
+ 211              	ulHighFrequencyTimerTicks:
+ 212 0000 00000000 		.space	4
+ 213              		.section	.rodata.main.str1.4,"aMS",%progbits,1
+ 214              		.align	2
+ 215              	.LC0:
+ 216 0000 0D0A202A 		.ascii	"\015\012 ** SYSCLK:%ld\015\012    PCLK1:%ld     PCL"
+ 216      2A205359 
+ 216      53434C4B 
+ 216      3A256C64 
+ 216      0D0A2020 
+ 217 0027 4B323A25 		.ascii	"K2:%ld\015\012\000"
+ 217      6C640D0A 
+ 217      00
+ 218              		.text
+ 219              	.Letext0:
+ 220              		.file 3 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+ 221              		.file 4 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+ 222              		.file 5 "Libraries/CMSIS/Include/core_cm4.h"
+ 223              		.file 6 "Libraries/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 224              		.file 7 "Libraries/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 11
+
+
+ 225              		.file 8 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+ 226              		.file 9 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include
+ 227              		.file 10 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eab
+ 228              		.file 11 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
+ 229              		.file 12 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
+ 230              		.file 13 "User/FreeRTOSConfig.h"
+ 231              		.file 14 "FreeRTOS/include/task.h"
+ 232              		.file 15 "Libraries/STM32F4xx_StdPeriph_Driver/inc/misc.h"
+ 233              		.file 16 "bsp/bsp.h"
+ 234              		.file 17 "bsp/inc/printf.h"
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:18     .text.main:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:26     .text.main:0000000000000000 main
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:70     .text.main:0000000000000028 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:75     .text.vApplicationTickHook:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:82     .text.vApplicationTickHook:0000000000000000 vApplicationTickHook
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:95     .text.vApplicationStackOverflowHook:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:102    .text.vApplicationStackOverflowHook:0000000000000000 vApplicationStackOverflowHook
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:143    .text.vApplicationMallocFailedHook:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:150    .text.vApplicationMallocFailedHook:0000000000000000 vApplicationMallocFailedHook
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:187    .text.vApplicationIdleHook:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:194    .text.vApplicationIdleHook:0000000000000000 vApplicationIdleHook
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccb7JM92.s:207    .rodata.main.str1.4:0000000000000000 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:18     .text.main:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:26     .text.main:0000000000000000 main
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:70     .text.main:0000000000000028 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:75     .text.vApplicationTickHook:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:82     .text.vApplicationTickHook:0000000000000000 vApplicationTickHook
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:95     .text.vApplicationStackOverflowHook:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:102    .text.vApplicationStackOverflowHook:0000000000000000 vApplicationStackOverflowHook
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:143    .text.vApplicationMallocFailedHook:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:150    .text.vApplicationMallocFailedHook:0000000000000000 vApplicationMallocFailedHook
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:187    .text.vApplicationIdleHook:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:194    .text.vApplicationIdleHook:0000000000000000 vApplicationIdleHook
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:211    .bss.ulHighFrequencyTimerTicks:0000000000000000 ulHighFrequencyTimerTicks
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:208    .bss.ulHighFrequencyTimerTicks:0000000000000000 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//cchxygsO.s:214    .rodata.main.str1.4:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 NVIC_PriorityGroupConfig

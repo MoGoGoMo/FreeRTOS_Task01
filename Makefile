@@ -27,12 +27,13 @@ STLINK:=/usr/local/Cellar/stlink/1.5.1/bin
 # C sources
 C_SOURCES = \
 User/main.c \
-User/sysInfoTest.c \
 User/stm32f4xx_it.c \
 User/system_stm32f4xx.c \
 bsp/bsp.c \
 bsp/src/bsp_uart_fifo.c \
 bsp/src/bsp_tim_pwm.c \
+bsp/src/bsp_key.c \
+bsp/src/bsp_led.c \
 bsp/printf.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/misc.c \
 Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_gpio.c \

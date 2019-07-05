@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
   29:bsp/src/bsp_uart_fifo.c **** 	static UartStr_TypeDef g_tUart2;
   30:bsp/src/bsp_uart_fifo.c **** 	static uint8_t g_TxBuf2[UART2_TX_BUF_SIZE];		
   31:bsp/src/bsp_uart_fifo.c **** 	static uint8_t g_RxBuf2[UART2_RX_BUF_SIZE];		
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 2
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 2
 
 
   32:bsp/src/bsp_uart_fifo.c **** #endif
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
   86:bsp/src/bsp_uart_fifo.c **** *	功能说明: 将COM端口号转换为UART指针
   87:bsp/src/bsp_uart_fifo.c **** *	形    参: _ucPort: 端口号(COM1 - COM6)
   88:bsp/src/bsp_uart_fifo.c **** *	返 回 值: uart指针
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 3
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 3
 
 
   89:bsp/src/bsp_uart_fifo.c **** ***************************************************************************************************
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  143:bsp/src/bsp_uart_fifo.c **** 		/* 不做任何处理 */
  144:bsp/src/bsp_uart_fifo.c **** 		return 0;
  145:bsp/src/bsp_uart_fifo.c **** 	}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 4
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 4
 
 
  146:bsp/src/bsp_uart_fifo.c **** }
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  200:bsp/src/bsp_uart_fifo.c **** 	{
  201:bsp/src/bsp_uart_fifo.c **** 		/* 不做任何处理 */
  202:bsp/src/bsp_uart_fifo.c **** 		return 0;
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 5
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 5
 
 
  203:bsp/src/bsp_uart_fifo.c **** 	}
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  257:bsp/src/bsp_uart_fifo.c **** uint8_t comGetChar(UartPort_TypeDef _ucPort, uint8_t *_pByte)
  258:bsp/src/bsp_uart_fifo.c **** {
  259:bsp/src/bsp_uart_fifo.c **** 	UartStr_TypeDef *pUart;
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 6
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 6
 
 
  260:bsp/src/bsp_uart_fifo.c **** 
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  314:bsp/src/bsp_uart_fifo.c **** }
  315:bsp/src/bsp_uart_fifo.c **** 
  316:bsp/src/bsp_uart_fifo.c **** /*
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 7
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 7
 
 
  317:bsp/src/bsp_uart_fifo.c **** ***************************************************************************************************
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  371:bsp/src/bsp_uart_fifo.c **** 
  372:bsp/src/bsp_uart_fifo.c **** 	/* Determine the integer part */
  373:bsp/src/bsp_uart_fifo.c **** 	if ((USARTx->CR1 & USART_CR1_OVER8) != 0)
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 8
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 8
 
 
  374:bsp/src/bsp_uart_fifo.c **** 	{
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  423:bsp/src/bsp_uart_fifo.c **** 	g_tUart1.usTxCount = 0;						/* 待发送的数据个数 */
  424:bsp/src/bsp_uart_fifo.c **** 	g_tUart1.SendBefor = 0;						/* 发送数据前的回调函数 */
  425:bsp/src/bsp_uart_fifo.c **** 	g_tUart1.SendOver = 0;						/* 发送完毕后的回调函数 */
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 9
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 9
 
 
  426:bsp/src/bsp_uart_fifo.c **** 	g_tUart1.ReciveNew = 0;						/* 接收到新数据后的回调函数 */
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  441:bsp/src/bsp_uart_fifo.c **** 	g_tUart2.SendBefor = 0;						/* 发送数据前的回调函数 */
   72              		.loc 1 441 2 is_stmt 1 view .LVU23
   73              		.loc 1 441 21 is_stmt 0 view .LVU24
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 10
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 10
 
 
   74 0024 DA61     		str	r2, [r3, #28]
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  489:bsp/src/bsp_uart_fifo.c **** 	g_tUart5.usRxRead = 0;						/* 接收FIFO读索引 */
  490:bsp/src/bsp_uart_fifo.c **** 	g_tUart5.usRxCount = 0;						/* 接收到的新数据个数 */
  491:bsp/src/bsp_uart_fifo.c **** 	g_tUart5.usTxCount = 0;						/* 待发送的数据个数 */
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 11
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 11
 
 
  492:bsp/src/bsp_uart_fifo.c **** 	g_tUart5.SendBefor = 0;						/* 发送数据前的回调函数 */
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  103              		.cfi_startproc
  104              		@ args = 0, pretend = 0, frame = 24
  105              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 12
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 12
 
 
  106 0000 F0B5     		push	{r4, r5, r6, r7, lr}
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  567:bsp/src/bsp_uart_fifo.c **** 
  568:bsp/src/bsp_uart_fifo.c **** 		/* 将 PB7 映射为 USART1_RX */
  569:bsp/src/bsp_uart_fifo.c **** 		GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_USART1);
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 13
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 13
 
 
  570:bsp/src/bsp_uart_fifo.c **** 
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  624:bsp/src/bsp_uart_fifo.c **** 		GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;	/* 输出类型为推挽 */
  625:bsp/src/bsp_uart_fifo.c **** 		GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;	/* 内部上拉电阻使能 */
  626:bsp/src/bsp_uart_fifo.c **** 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;	/* 复用模式 */
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 14
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 14
 
 
  627:bsp/src/bsp_uart_fifo.c **** 
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  142              		.loc 1 657 3 view .LVU37
  143              		.loc 1 657 33 is_stmt 0 view .LVU38
  144 002c 0024     		movs	r4, #0
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 15
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 15
 
 
  145 002e 8DF81640 		strb	r4, [sp, #22]
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  676:bsp/src/bsp_uart_fifo.c **** 	#endif
  677:bsp/src/bsp_uart_fifo.c **** 
  678:bsp/src/bsp_uart_fifo.c **** 	/* 第2步： 配置串口硬件参数 */
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 16
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 16
 
 
  679:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_BaudRate = UART2_BAUD;	/* 波特率 */
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  216 0098 FFF7FEFF 		bl	USART_Cmd
  217              	.LVL8:
  698:bsp/src/bsp_uart_fifo.c **** 
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 17
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 17
 
 
  699:bsp/src/bsp_uart_fifo.c **** 	/* CPU的小缺陷：串口配置好，如果直接Send，则第1个字节发送不出去
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  748:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
  749:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_Parity = USART_Parity_No ;
  750:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 18
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 18
 
 
  751:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  805:bsp/src/bsp_uart_fifo.c **** 	USART_ITConfig(UART4, USART_IT_RXNE, ENABLE);	/* 使能接收中断 */
  806:bsp/src/bsp_uart_fifo.c **** 	/*
  807:bsp/src/bsp_uart_fifo.c **** 		USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 19
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 19
 
 
  808:bsp/src/bsp_uart_fifo.c **** 		注意: 不要在此处打开发送中断
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  862:bsp/src/bsp_uart_fifo.c **** 	USART_Cmd(UART5, ENABLE);		/* 使能串口 */
  863:bsp/src/bsp_uart_fifo.c **** 
  864:bsp/src/bsp_uart_fifo.c **** 	/* CPU的小缺陷：串口配置好，如果直接Send，则第1个字节发送不出去
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 20
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 20
 
 
  865:bsp/src/bsp_uart_fifo.c **** 		如下语句解决第1个字节无法正确发送出去的问题 */
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  919:bsp/src/bsp_uart_fifo.c **** 	//USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_RTS_CTS;	/* 选择硬�
  920:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;	/* 不要硬件流
  921:bsp/src/bsp_uart_fifo.c **** 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 21
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 21
 
 
  922:bsp/src/bsp_uart_fifo.c **** 	USART_Init(USART6, &USART_InitStructure);
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  253              		.cfi_offset 14, -4
  254 0002 83B0     		sub	sp, sp, #12
  255              	.LCFI4:
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 22
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 22
 
 
  256              		.cfi_def_cfa_offset 16
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  985:bsp/src/bsp_uart_fifo.c **** #if UART5_FIFO_EN == 1
  986:bsp/src/bsp_uart_fifo.c **** 	/* 使能串口5中断t */
  987:bsp/src/bsp_uart_fifo.c **** 	NVIC_InitStructure.NVIC_IRQChannel = UART5_IRQn;
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 23
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 23
 
 
  988:bsp/src/bsp_uart_fifo.c **** 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 4;
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  305 0002 83B0     		sub	sp, sp, #12
  306              	.LCFI7:
  307              		.cfi_def_cfa_offset 32
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 24
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 24
 
 
  308 0004 0446     		mov	r4, r0
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1054:bsp/src/bsp_uart_fifo.c **** 			}
 1055:bsp/src/bsp_uart_fifo.c **** 		}
 1056:bsp/src/bsp_uart_fifo.c **** 	#endif
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 25
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 25
 
 
 1057:bsp/src/bsp_uart_fifo.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  353              		.loc 1 1049 4 is_stmt 1 view .LVU101
  354 002e FFF7FEFF 		bl	vPortExitCritical
  355              	.LVL18:
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 26
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 26
 
 
 1051:bsp/src/bsp_uart_fifo.c **** 			{
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1064:bsp/src/bsp_uart_fifo.c **** 		}
  393              		.loc 1 1064 22 is_stmt 0 view .LVU119
  394 005a 0023     		movs	r3, #0
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 27
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 27
 
 
  395 005c 2382     		strh	r3, [r4, #16]	@ movhi
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  435              		.cfi_offset 14, -4
  436 0002 0446     		mov	r4, r0
  437 0004 0E46     		mov	r6, r1
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 28
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 28
 
 
 1084:bsp/src/bsp_uart_fifo.c **** 	uint16_t usCount;
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  462 0018 A268     		ldr	r2, [r4, #8]
 1099:bsp/src/bsp_uart_fifo.c **** 
  463              		.loc 1 1099 34 view .LVU136
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 29
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 29
 
 
  464 001a 238B     		ldrh	r3, [r4, #24]
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1109:bsp/src/bsp_uart_fifo.c **** 	}
  502              		.loc 1 1109 10 is_stmt 0 view .LVU153
  503 0044 0120     		movs	r0, #1
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 30
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 30
 
 
  504 0046 E6E7     		b	.L17
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1132:bsp/src/bsp_uart_fifo.c **** 		{
 1133:bsp/src/bsp_uart_fifo.c **** 			_pUart->usRxWrite = 0;
 1134:bsp/src/bsp_uart_fifo.c **** 		}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 31
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 31
 
 
 1135:bsp/src/bsp_uart_fifo.c **** 		if (_pUart->usRxCount < _pUart->usRxBufSize)
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  567              	.L22:
 1162:bsp/src/bsp_uart_fifo.c **** 		}
 1163:bsp/src/bsp_uart_fifo.c **** 		else
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 32
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 32
 
 
 1164:bsp/src/bsp_uart_fifo.c **** 		{
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1129:bsp/src/bsp_uart_fifo.c **** 		_pUart->pRxBuf[_pUart->usRxWrite] = ch;
  579              		.loc 1 1129 6 view .LVU172
  580 0044 C0B2     		uxtb	r0, r0
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 33
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 33
 
 
  581              	.LVL36:
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1137:bsp/src/bsp_uart_fifo.c **** 		}
  618              		.loc 1 1137 21 view .LVU190
  619 006a 0133     		adds	r3, r3, #1
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 34
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 34
 
 
  620 006c 9BB2     		uxth	r3, r3
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  658              		.loc 1 1167 7 view .LVU206
  659 0092 9342     		cmp	r3, r2
  660 0094 01D3     		bcc	.L29
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 35
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 35
 
 
 1169:bsp/src/bsp_uart_fifo.c **** 			}
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  700 00c6 002B     		cmp	r3, #0
  701 00c8 B8D0     		beq	.L22
 1187:bsp/src/bsp_uart_fifo.c **** 			}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 36
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 36
 
 
  702              		.loc 1 1187 5 is_stmt 1 view .LVU222
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  741 00f2 9BB2     		uxth	r3, r3
  742 00f4 A382     		strh	r3, [r4, #20]	@ movhi
  743              		.loc 1 1203 1 view .LVU238
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 37
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 37
 
 
  744 00f6 A1E7     		b	.L22
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  796              		@ link register save eliminated.
   93:bsp/src/bsp_uart_fifo.c **** 	{
  797              		.loc 1 93 2 view .LVU245
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 38
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 38
 
 
   93:bsp/src/bsp_uart_fifo.c **** 	{
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  844              		@ frame_needed = 0, uses_anonymous_args = 0
  845              		@ link register save eliminated.
  159:bsp/src/bsp_uart_fifo.c **** 	{
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 39
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 39
 
 
  846              		.loc 1 159 2 view .LVU256
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  892              		@ args = 0, pretend = 0, frame = 0
  893              		@ frame_needed = 0, uses_anonymous_args = 0
  217:bsp/src/bsp_uart_fifo.c **** 	UartStr_TypeDef *pUart;
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 40
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 40
 
 
  894              		.loc 1 217 1 is_stmt 0 view .LVU267
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  937              		.global	comSendChar
  938              		.syntax unified
  939              		.thumb
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 41
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 41
 
 
  940              		.thumb_func
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  990              		.loc 1 258 1 is_stmt 0 view .LVU286
  991 0000 10B5     		push	{r4, lr}
  992              	.LCFI16:
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 42
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 42
 
 
  993              		.cfi_def_cfa_offset 8
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  279:bsp/src/bsp_uart_fifo.c **** 	UartStr_TypeDef *pUart;
  1038              		.loc 1 279 1 is_stmt 0 view .LVU298
  1039 0000 08B5     		push	{r3, lr}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 43
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 43
 
 
  1040              	.LCFI17:
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  302:bsp/src/bsp_uart_fifo.c **** 	UartStr_TypeDef *pUart;
  1083              		.loc 1 302 1 is_stmt 0 view .LVU312
  1084 0000 08B5     		push	{r3, lr}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 44
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 44
 
 
  1085              	.LCFI18:
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  349:bsp/src/bsp_uart_fifo.c **** 	uint32_t tmpreg = 0x00, apbclock = 0x00;
  1128              		.loc 1 349 1 is_stmt 0 view .LVU326
  1129 0000 30B5     		push	{r4, r5, lr}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 45
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 45
 
 
  1130              	.LCFI19:
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  365:bsp/src/bsp_uart_fifo.c **** 	}
  1170              		.loc 1 365 3 is_stmt 1 view .LVU341
  365:bsp/src/bsp_uart_fifo.c **** 	}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 46
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 46
 
 
  1171              		.loc 1 365 12 is_stmt 0 view .LVU342
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  1209              		.loc 1 389 5 view .LVU358
  1210 004a 13F4004F 		tst	r3, #32768
  1211 004e 13D1     		bne	.L76
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 47
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 47
 
 
  395:bsp/src/bsp_uart_fifo.c **** 	}
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  376:bsp/src/bsp_uart_fifo.c **** 	}
  1252              		.loc 1 376 18 view .LVU373
  1253 0072 B1FBF2F2 		udiv	r2, r1, r2
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 48
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 48
 
 
  1254              	.LVL90:
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  326:bsp/src/bsp_uart_fifo.c **** 	USART_TypeDef* USARTx;
  1300              		.loc 1 326 1 is_stmt 0 view .LVU384
  1301 0000 10B5     		push	{r4, lr}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 49
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 49
 
 
  1302              	.LCFI23:
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1218:bsp/src/bsp_uart_fifo.c **** #endif
 1219:bsp/src/bsp_uart_fifo.c **** 
 1220:bsp/src/bsp_uart_fifo.c **** #if UART2_FIFO_EN == 1
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 50
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 50
 
 
 1221:bsp/src/bsp_uart_fifo.c **** void USART2_IRQHandler(void)
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
 1244:bsp/src/bsp_uart_fifo.c **** 	UartIRQ(&g_tUart5);
 1245:bsp/src/bsp_uart_fifo.c **** }
 1246:bsp/src/bsp_uart_fifo.c **** #endif
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 51
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 51
 
 
 1247:bsp/src/bsp_uart_fifo.c **** 
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  1390              		.loc 1 1279 1 is_stmt 0 view .LVU402
  1391 000c 2046     		mov	r0, r4
  1392 000e 10BD     		pop	{r4, pc}
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 52
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 52
 
 
  1393              		.loc 1 1279 1 view .LVU403
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  1431              		.loc 1 1297 2 is_stmt 1 view .LVU409
 1298:bsp/src/bsp_uart_fifo.c **** #else
 1299:bsp/src/bsp_uart_fifo.c **** 	/* 等待串口1输入数据 */
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 53
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 53
 
 
 1300:bsp/src/bsp_uart_fifo.c **** 	while (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
@@ -3178,73 +3178,73 @@ ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 1
  1476              		.file 13 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eab
  1477              		.file 14 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
  1478              		.file 15 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 54
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 54
 
 
  1479              		.file 16 "/Users/gordon/Documents/soft_proj/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/includ
  1480              		.file 17 "bsp/inc/bsp_uart_fifo.h"
  1481              		.file 18 "FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h"
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 55
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 55
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bsp_uart_fifo.c
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:18     .text.UartVarInit:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:25     .text.UartVarInit:0000000000000000 UartVarInit
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:86     .text.UartVarInit:000000000000002c $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:94     .text.InitHardUart:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:100    .text.InitHardUart:0000000000000000 InitHardUart
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:232    .text.InitHardUart:00000000000000a8 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:238    .text.ConfigUartNVIC:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:244    .text.ConfigUartNVIC:0000000000000000 ConfigUartNVIC
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:283    .text.UartSend:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:289    .text.UartSend:0000000000000000 UartSend
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:415    .text.UartGetChar:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:421    .text.UartGetChar:0000000000000000 UartGetChar
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:509    .text.UartIRQ:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:515    .text.UartIRQ:0000000000000000 UartIRQ
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:749    .text.bsp_InitUart:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:756    .text.bsp_InitUart:0000000000000000 bsp_InitUart
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:782    .text.ComToUart:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:789    .text.ComToUart:0000000000000000 ComToUart
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:826    .text.ComToUart:0000000000000014 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:831    .text.ComToUSARTx:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:838    .text.ComToUSARTx:0000000000000000 ComToUSARTx
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:875    .text.ComToUSARTx:0000000000000014 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:880    .text.comSendBuf:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:887    .text.comSendBuf:0000000000000000 comSendBuf
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:936    .text.comSendChar:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:943    .text.comSendChar:0000000000000000 comSendChar
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:976    .text.comGetChar:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:983    .text.comGetChar:0000000000000000 comGetChar
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1024   .text.comClearTxFifo:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1031   .text.comClearTxFifo:0000000000000000 comClearTxFifo
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1069   .text.comClearRxFifo:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1076   .text.comClearRxFifo:0000000000000000 comClearRxFifo
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1114   .text.USART_SetBaudRate:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1121   .text.USART_SetBaudRate:0000000000000000 USART_SetBaudRate
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1280   .text.USART_SetBaudRate:000000000000008c $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1286   .text.comSetBaud:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1293   .text.comSetBaud:0000000000000000 comSetBaud
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1327   .text.USART2_IRQHandler:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1334   .text.USART2_IRQHandler:0000000000000000 USART2_IRQHandler
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1354   .text.USART2_IRQHandler:000000000000000c $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1359   .text.fputc:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1366   .text.fputc:0000000000000000 fputc
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1398   .text.fgetc:0000000000000000 $t
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1405   .text.fgetc:0000000000000000 fgetc
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1443   .bss.g_RxBuf2:0000000000000000 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1447   .bss.g_RxBuf2:0000000000000000 g_RxBuf2
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1450   .bss.g_TxBuf2:0000000000000000 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1454   .bss.g_TxBuf2:0000000000000000 g_TxBuf2
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1457   .bss.g_tUart2:0000000000000000 $d
-/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s:1461   .bss.g_tUart2:0000000000000000 g_tUart2
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:18     .text.UartVarInit:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:25     .text.UartVarInit:0000000000000000 UartVarInit
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:86     .text.UartVarInit:000000000000002c $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:94     .text.InitHardUart:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:100    .text.InitHardUart:0000000000000000 InitHardUart
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:232    .text.InitHardUart:00000000000000a8 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:238    .text.ConfigUartNVIC:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:244    .text.ConfigUartNVIC:0000000000000000 ConfigUartNVIC
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:283    .text.UartSend:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:289    .text.UartSend:0000000000000000 UartSend
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:415    .text.UartGetChar:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:421    .text.UartGetChar:0000000000000000 UartGetChar
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:509    .text.UartIRQ:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:515    .text.UartIRQ:0000000000000000 UartIRQ
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:749    .text.bsp_InitUart:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:756    .text.bsp_InitUart:0000000000000000 bsp_InitUart
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:782    .text.ComToUart:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:789    .text.ComToUart:0000000000000000 ComToUart
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:826    .text.ComToUart:0000000000000014 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:831    .text.ComToUSARTx:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:838    .text.ComToUSARTx:0000000000000000 ComToUSARTx
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:875    .text.ComToUSARTx:0000000000000014 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:880    .text.comSendBuf:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:887    .text.comSendBuf:0000000000000000 comSendBuf
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:936    .text.comSendChar:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:943    .text.comSendChar:0000000000000000 comSendChar
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:976    .text.comGetChar:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:983    .text.comGetChar:0000000000000000 comGetChar
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1024   .text.comClearTxFifo:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1031   .text.comClearTxFifo:0000000000000000 comClearTxFifo
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1069   .text.comClearRxFifo:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1076   .text.comClearRxFifo:0000000000000000 comClearRxFifo
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1114   .text.USART_SetBaudRate:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1121   .text.USART_SetBaudRate:0000000000000000 USART_SetBaudRate
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1280   .text.USART_SetBaudRate:000000000000008c $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1286   .text.comSetBaud:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1293   .text.comSetBaud:0000000000000000 comSetBaud
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1327   .text.USART2_IRQHandler:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1334   .text.USART2_IRQHandler:0000000000000000 USART2_IRQHandler
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1354   .text.USART2_IRQHandler:000000000000000c $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1359   .text.fputc:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1366   .text.fputc:0000000000000000 fputc
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1398   .text.fgetc:0000000000000000 $t
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1405   .text.fgetc:0000000000000000 fgetc
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1443   .bss.g_RxBuf2:0000000000000000 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1447   .bss.g_RxBuf2:0000000000000000 g_RxBuf2
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1450   .bss.g_TxBuf2:0000000000000000 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1454   .bss.g_TxBuf2:0000000000000000 g_TxBuf2
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1457   .bss.g_tUart2:0000000000000000 $d
+/var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s:1461   .bss.g_tUart2:0000000000000000 g_tUart2
 
 UNDEFINED SYMBOLS
 RCC_AHB1PeriphClockCmd
 RCC_APB1PeriphClockCmd
 GPIO_PinAFConfig
-ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccspAFMQ.s 			page 56
+ARM GAS  /var/folders/3x/w4njr7bn61lgchzhylxd3k6w0000gn/T//ccp5NHGB.s 			page 56
 
 
 GPIO_Init

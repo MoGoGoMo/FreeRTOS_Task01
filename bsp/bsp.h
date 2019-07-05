@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    Project/F446_T1/bsp.h
   * @author  Gordon Tao
-  * @version V0.1
-  * @date    27-June-2019
+  * @version V1.0.0
+  * @date    04-June-2019
   * @brief   Header for bsp.c module
   ******************************************************************************
   * @attention
@@ -46,6 +46,10 @@
     #include "task.h"
     #include "list.h"
     #include "queue.h"
+    #include "portable.h"
+    #include "timers.h"
+    #include "semphr.h"
+    #include "portmacro.h"
     #define DISABLE_INT()   taskENTER_CRITICAL()
     #define ENABLE_INT()   taskEXIT_CRITICAL()
 #else
@@ -73,7 +77,7 @@
 /* Include User App & BSP  ---------------------------------------------------------------------*/
 #include "bsp_uart_fifo.h"
 // #include "bsp_led.h"
-// #include "bsp_key.h"
+#include "bsp_key.h"
 
 #include "bsp_tim_pwm.h"
 

@@ -37,8 +37,13 @@
 /* Private define ------------------------------------------------------------*/
 #define mainFLASH_TASK_PRIORITY             ( tskIDLE_PRIORITY + 1UL )
 #define mainButton_TASK_PRIORITY            ( tskIDLE_PRIORITY + 2UL )
+#define  timerHIGHEST_PRIORITY		          ( tskIDLE_PRIORITY + 3UL )
+
+/* Timer frequency，per interrupt 50us */
+#define  timerINTERRUPT_FREQUENCY	20000
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+volatile uint32_t ulHighFrequencyTimerTicks = 0UL;  /* called by system */
 
 /* Private function prototypes -----------------------------------------------*/
 static void prvLedFlashTask(void *pvParameters);
@@ -49,6 +54,8 @@ void vApplicationTickHook(void);
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName );
 void vApplicationIdleHook(void);
 void vApplicationMallocFailedHook(void);
+static void prvSetupSysTimerForTest(void);
+static void TIM6_DAC_IRQHandler( void );
 
 
 /**
@@ -59,9 +66,7 @@ void vApplicationMallocFailedHook(void);
 int main(void)
 {
   // GPIO_InitTypeDef GPIO_InitStructure;
-  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
   DISABLE_INT();  
-  // __set_PRIMASK(1);
  
  /*!< At this stage the microcontroller clock setting is already configured, 
        this is done through SystemInit() function which is called from startup
@@ -125,6 +130,36 @@ void vApplicationIdleHook( void )
   important that vApplicationIdleHook() is permitted to return to its calling
   function, because it is the responsibility of the idle task to clean up
   memory allocated by the kernel to any task that has since been deleted. */
+}
+
+/*
+*********************************************************************************************************
+*	Function Name: vSetupTimerTest
+*	Description: Create Timer
+*	Parameter: None
+*	Return Value: None
+*********************************************************************************************************
+*/
+static void prvSetupSysTimerForTest(void)
+{
+  bsp_SetTIMforInt(TIM6, timerINTERRUPT_FREQUENCY, timerHIGHEST_PRIORITY, 0);
+}
+
+/*
+*********************************************************************************************************
+*   Function Name: TIM6_DAC_IRQHandler
+*	Description: Timer6 Interupt service process
+*	Parameter: None
+*	Return Value: None
+*********************************************************************************************************
+*/
+static void TIM6_DAC_IRQHandler( void )
+{
+  if(TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)
+	{
+      ulHighFrequencyTimerTicks++;
+      TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
+	}
 }
 
 

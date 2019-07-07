@@ -140,7 +140,7 @@ typedef enum
 	KEY_8_UP,				/* Key 8 released */
 	KEY_8_LONG,				/* Key 8 long pressed */
 
-	/* 组合键 */
+	/* Combination Key */
 	KEY_9_DOWN,				/* Key 9 pressed */
 	KEY_9_UP,				/* Key 9 released */
 	KEY_9_LONG,				/* Key 9 long pressed */

@@ -77,33 +77,33 @@
 
 /*
 *********************************************************************************************************
-*	函 数 名: bsp_InitLed
-*	功能说明: 配置LED指示灯相关的GPIO,  该函数被 bsp_Init() 调用。
-*	形    参:  无
-*	返 回 值: 无
+*	Function Name: bsp_InitLed
+*	Description: Config LED GPIO, call by bsp_Init()
+*	Parameter:  None
+*	Return: None
 *********************************************************************************************************
 */
 void bsp_InitLed(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	/* 打开GPIO时钟 */
+	/* Set GPIO Clock */
 	RCC_AHB1PeriphClockCmd(RCC_ALL_LED, ENABLE);
 
 	/*
-		配置所有的LED指示灯GPIO为推挽输出模式
-		由于将GPIO设置为输出时，GPIO输出寄存器的值缺省是0，因此会驱动LED点亮.
-		这是我不希望的，因此在改变GPIO为输出前，先关闭LED指示灯
+		Config all LED GPIO as pull/push and output mode
+		Since Set GPIO as output, the default value of GPIO Output reg is 0, LED is on
+		We don't want it. So set GPIO as output, and LED state will be off
 	*/
 	//bsp_LedOff(1);
 	bsp_LedOff(2);
 	//bsp_LedOff(3);
 	//bsp_LedOff(4);
 
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;		/* 设为输出口 */
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;		/* 设为推挽模式 */
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;	/* 上下拉电阻不使能 */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;	/* IO口最大速度 */
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;		/* Set as output mode */
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;		/* Set GPIO as push/pull mode */
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;	/* Set not pull up and pull down */
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;	/* Set GPIO Max speed */
 #ifdef STM32_F446
     GPIO_InitStructure.GPIO_Pin = GPIO_PIN_LED2;
 	GPIO_Init(GPIO_PORT_LED2, &GPIO_InitStructure);
@@ -125,10 +125,10 @@ void bsp_InitLed(void)
 
 /*
 *********************************************************************************************************
-*	函 数 名: bsp_LedOn
-*	功能说明: 点亮指定的LED指示灯。
-*	形    参:  _no : 指示灯序号，范围 1 - 4
-*	返 回 值: 无
+*	Function Name: bsp_LedOn
+*	Fucntion Description: Light up the specified LED.
+*	Parameter:  _no : LED Serial Number:1 to 4
+*	Return: None
 *********************************************************************************************************
 */
 void bsp_LedOn(uint8_t _no)
@@ -175,10 +175,10 @@ void bsp_LedOn(uint8_t _no)
 
 /*
 *********************************************************************************************************
-*	函 数 名: bsp_LedOff
-*	功能说明: 熄灭指定的LED指示灯。
-*	形    参:  _no : 指示灯序号，范围 1 - 4
-*	返 回 值: 无
+*	Function Name: bsp_LedOff
+*	Function Description: Turn off the specific LED
+*	Parameter:  _no : LED Serial Number，From 1 to 4
+*	return: 无
 *********************************************************************************************************
 */
 void bsp_LedOff(uint8_t _no)
@@ -224,10 +224,10 @@ void bsp_LedOff(uint8_t _no)
 
 /*
 *********************************************************************************************************
-*	函 数 名: bsp_LedToggle
-*	功能说明: 翻转指定的LED指示灯。
-*	形    参:  _no : 指示灯序号，范围 1 - 4
-*	返 回 值: 按键代码
+*	Function Name: bsp_LedToggle
+*	Function Description: Toggle the specific LED
+*	Parameter:  _no : LED serial number，From 1 to 4
+*	return: Key ID
 *********************************************************************************************************
 */
 void bsp_LedToggle(uint8_t _no)
@@ -271,10 +271,10 @@ void bsp_LedToggle(uint8_t _no)
 
 /*
 *********************************************************************************************************
-*	函 数 名: bsp_IsLedOn
-*	功能说明: 判断LED指示灯是否已经点亮。
-*	形    参:  _no : 指示灯序号，范围 1 - 4
-*	返 回 值: 1表示已经点亮，0表示未点亮
+*	Function Name: bsp_IsLedOn
+*	Function Description: If LED is on or not
+*	Parameter:  _no : Indicate LED serial number, from 1 to 4
+*	return: 1=LED ON, 0=LED OFF
 *********************************************************************************************************
 */
 uint8_t bsp_IsLedOn(uint8_t _no)
@@ -349,4 +349,4 @@ uint8_t bsp_IsLedOn(uint8_t _no)
 	return 0;
 }
 
-/***************************** 安富莱电子 www.armfly.com (END OF FILE) *********************************/
+/***************************** (END OF FILE) *********************************/

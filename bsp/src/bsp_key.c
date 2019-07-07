@@ -38,16 +38,16 @@
 
 #ifdef STM32_X3		
 	/*
-			K1键       : PC13 (low level: pressed)
-			K2键       : PC0  (low level: pressed)
-			K3键       : PC1  (low level: pressed)
-			摇杆UP键   : PC2  (low level: pressed)
-			摇杆DOWN键 : PC3  (low level: pressed)
-			摇杆LEFT键 : PC4  (low level: pressed)
-			摇杆RIGHT键: PA0  (low level: pressed)
-			摇杆OK键   : PA1  (low level: pressed)
+			K1 Key       : PC13 (low level: pressed)
+			K2 Key       : PC0  (low level: pressed)
+			K3 Key       : PC1  (low level: pressed)
+			UP Key   : PC2  (low level: pressed)
+			Joy DOWN Key : PC3  (low level: pressed)
+			Joy LEFT Key : PC4  (low level: pressed)
+			Joy RIGHT Key: PA0  (low level: pressed)
+			Joy OK Key   : PA1  (low level: pressed)
 	*/
-	#define RCC_ALL_KEY 	(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOC)	/* 按键口对应的RCC时钟 */
+	#define RCC_ALL_KEY 	(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOC)
 
 	#define GPIO_PORT_K1    GPIOC
 	#define GPIO_PIN_K1	    GPIO_Pin_13
@@ -305,7 +305,6 @@ void bsp_SetKeyParam(uint8_t _ucKeyID, uint16_t _LongTime, uint8_t  _RepeatSpeed
 	s_tBtn[_ucKeyID].RepeatCount = 0;						
 }
 
-
 /*
 *********************************************************************************************************
 *	Function Name: bsp_ClearKey
@@ -331,14 +330,14 @@ static void bsp_InitKeyHard(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	/* 第1步：打开GPIO时钟 */
+	/* Step 1：Open GPIO Timer */
 	RCC_AHB1PeriphClockCmd(RCC_ALL_KEY, ENABLE);
 
-	/* 第2步：配置所有的按键GPIO为浮动输入模式(实际上CPU复位后就是输入状态) */
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;		/* 设为输入口 */
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;		/* 设为推挽模式 */
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;	/* NONE需上下拉电阻 */
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	/* IO口最大速度 */
+	/* Step 2：Config all GPIO mode of Keys */
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;		/* Set GPIO Mode as input */
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;		/* Set GPIO as push/pull mode */
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;	/* NO PULL_UP or PULL_DOWN */
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	/* Set GPIO Speed */
 
     #if defined(STM32_V5) || defined(STM32_X3)
 	GPIO_InitStructure.GPIO_Pin = GPIO_PIN_K1;
@@ -391,26 +390,25 @@ static void bsp_InitKeyVar(void)
 	for (i = 0; i < KEY_COUNT; i++)
 	{
 		s_tBtn[i].LongTime = KEY_LONG_TIME;			
-		s_tBtn[i].Count = KEY_FILTER_TIME / 2;		/* 计数器设置为滤波时间的一半 */
-		s_tBtn[i].State = 0;							/* 按键缺省状态，0为未按下 */
-		s_tBtn[i].RepeatSpeed = 0;						/* 按键连发的速度，0表示不支持连发 */
-		s_tBtn[i].RepeatCount = 0;						/* 连发计数器 */
+		s_tBtn[i].Count = KEY_FILTER_TIME / 2;		/* Set counter as half filter time */
+		s_tBtn[i].State = 0;							/* Default State of Key, 0=No pressed */
+		s_tBtn[i].RepeatSpeed = 0;						/* Key Repeat Speed, 0=No Repeat Key */
+		s_tBtn[i].RepeatCount = 0;						/* Repeat Count */
 	}
 
     #if defined(STM32_V5) || defined(STM32_X3)
-	/* 如果需要单独更改某个按键的参数，可以在此单独重新赋值 */
-	/* 比如，我们希望按键1按下超过1秒后，自动重发相同键值 */
+	/* You can change the individual parameter Key below */
 	s_tBtn[KID_JOY_U].LongTime = 100;
-	s_tBtn[KID_JOY_U].RepeatSpeed = 5;	/* 每隔50ms自动发送键值 */
+	s_tBtn[KID_JOY_U].RepeatSpeed = 5;	/* Every 50ms, auto send the Key ID */
 
 	s_tBtn[KID_JOY_D].LongTime = 100;
-	s_tBtn[KID_JOY_D].RepeatSpeed = 5;	/* 每隔50ms自动发送键值 */
+	s_tBtn[KID_JOY_D].RepeatSpeed = 5;	/* Every 50ms, auto send the Key ID */
 
 	s_tBtn[KID_JOY_L].LongTime = 100;
-	s_tBtn[KID_JOY_L].RepeatSpeed = 5;	/* 每隔50ms自动发送键值 */
+	s_tBtn[KID_JOY_L].RepeatSpeed = 5;	/* Every 50ms, auto send the Key ID */
 
 	s_tBtn[KID_JOY_R].LongTime = 100;
-	s_tBtn[KID_JOY_R].RepeatSpeed = 5;	/* 每隔50ms自动发送键值 */
+	s_tBtn[KID_JOY_R].RepeatSpeed = 5;	/* Every 50ms, auto send the Key ID */
 
 	s_tBtn[0].IsKeyDownFunc = IsKeyDown1;
 	s_tBtn[1].IsKeyDownFunc = IsKeyDown2;
@@ -433,8 +431,8 @@ static void bsp_InitKeyVar(void)
 /*
 *********************************************************************************************************
 *	Function Name: bsp_DetectKey
-*	Function Description: 检测一个按键。非阻塞状态，必须被周期性的调用。
-*	Parameters:  按键结构变量指针
+*	Function Description: Key detection. None block Station, call period
+*	Parameters:  Key Structure pointer
 *	Return: NONE
 *********************************************************************************************************
 */
@@ -443,7 +441,7 @@ static void bsp_DetectKey(uint8_t i)
 	KeyStruct_TypeDef *pBtn;
 
 	/*
-		如果没有初始化按键函数，则报错
+		If there is no initialization function, retrun Error.
 		if (s_tBtn[i].IsKeyDownFunc == 0)
 		{
 			printf("Fault : DetectButton(), s_tBtn[i].IsKeyDownFunc undefine");
@@ -467,7 +465,7 @@ static void bsp_DetectKey(uint8_t i)
 			{
 				pBtn->State = 1;
 
-				/* 发送按钮按下的消息 */
+				/* Send Key pressed message */
 				bsp_PutKey((uint8_t)(3 * i + 1));
 			}
 
@@ -475,10 +473,10 @@ static void bsp_DetectKey(uint8_t i)
 			{
 				if (pBtn->LongCount < pBtn->LongTime)
 				{
-					/* 发送按钮持续按下的消息 */
+					/* Send pressed key message */
 					if (++pBtn->LongCount == pBtn->LongTime)
 					{
-						/* 键值放入按键FIFO */
+						/* Put Key ID into FIFO */
 						bsp_PutKey((uint8_t)(3 * i + 3));
 					}
 				}
@@ -489,7 +487,7 @@ static void bsp_DetectKey(uint8_t i)
 						if (++pBtn->RepeatCount >= pBtn->RepeatSpeed)
 						{
 							pBtn->RepeatCount = 0;
-							/* 常按键后，每隔10ms发送1个按键 */
+							/* After pressed key, send a key ID every 10ms */
 							bsp_PutKey((uint8_t)(3 * i + 1));
 						}
 					}
@@ -513,7 +511,7 @@ static void bsp_DetectKey(uint8_t i)
 			{
 				pBtn->State = 0;
 
-				/* 发送按钮弹起的消息 */
+				/* Send the key released message */
 				bsp_PutKey((uint8_t)(3 * i + 2));
 			}
 		}
@@ -526,7 +524,7 @@ static void bsp_DetectKey(uint8_t i)
 /*
 *********************************************************************************************************
 *	Function Name: bsp_KeyScan
-*	Function Description: 扫描所有按键。非阻塞，被systick中断周期性的调用
+*	Function Description: Scan all keys, None blocked, call by systick
 *	Parameters:  NONE
 *	Return: NONE
 *********************************************************************************************************
